@@ -30,9 +30,17 @@ int batterychargeRateIsOk(float chargeRate){
   }
 }
 
+int batteryIsOk(float temperature, float soc, float chargeRate){
+  int batteryIsOk = 1;
+  batteryIsOk *= batteryTemperatureIsOk(temperature);
+  batteryIsOk *= batterySOCIsOk(soc);
+  batteryIsOk *= batterychargeRateIsOk(chargeRate);
+  return batteryIsOk;
+}
+
 void testbatterystatus(){
-  assert(batteryTemperatureIsOk(25) && batterySOCIsOk(70) && batterychargeRateIsOk(0.7));
-  assert(batteryTemperatureIsOk(50) && batterySOCIsOk(85) && batterychargeRateIsOk(0));
+  assert(batteryIsOk(25, 70, 0.7));
+  assert(batteryIsOk(50, 85, 0));
 }
 
 int main() {
