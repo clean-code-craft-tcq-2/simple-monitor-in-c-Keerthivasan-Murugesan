@@ -1,11 +1,11 @@
 #include "CheckBatteryStatus.h"
 
-int lowerThresholdBreached (float value, float threshold){
+int lowerThresholdBreached(float value, float threshold){
     if (value < threshold) return 1;
     else return 0;
 }
 
-int higherThresholdBreached (float value, float threshold){
+int higherThresholdBreached(float value, float threshold){
     if (value > threshold) return 1;
     else return 0;
 }

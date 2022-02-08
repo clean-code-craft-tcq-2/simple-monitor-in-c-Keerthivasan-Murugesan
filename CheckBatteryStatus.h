@@ -9,7 +9,7 @@
 #define CHARGERATE_HIGH_THR  0.8
 
 int lowerThresholdBreached (float value, float threshold);
-int higherThresholdBreached (float value, float threshold)
+int higherThresholdBreached (float value, float threshold);
 
 int batteryTemperatureIsOk(float temperature);
 int batterySOCIsOk(float soc);
