@@ -17,10 +17,10 @@ int batteryTemperatureIsOk(float temperature) {
 
     if(result_high || result_low) {
         printf("Temperature out of range!\n");
-        return 1;
+        return 0;
     }
     else{
-        return 0;
+        return 1;
     }
 
 }
@@ -32,10 +32,10 @@ int batterySOCIsOk(float soc){
 
     if(result_high || result_low) {
         printf("SOC out of range!\n");
-        return 1;
+        return 0;
     }
     else{
-        return 0;
+        return 1;
     }
 
 }
@@ -45,10 +45,10 @@ int batterychargeRateIsOk(float chargeRate){
     int result_low = lowerThresholdBreached(chargeRate, CHARGERATE_LOW_THR);
     if(result_high || result_low) {
         printf("Charge Rate out of range!\n");
-        return 1;
+        return 0;
     }
      else{
-        return 0;
+        return 1;
     }
 }
 
