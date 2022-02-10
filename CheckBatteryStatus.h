@@ -16,6 +16,5 @@ int batterySOCIsOk(float soc);
 int batterychargeRateIsOk(float chargeRate);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
-int batteryIsNotOk(float temperature, float soc, float chargeRate);
 
 #endif
