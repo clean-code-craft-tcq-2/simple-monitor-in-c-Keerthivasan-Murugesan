@@ -57,5 +57,5 @@ int batteryIsOk(float temperature, float soc, float chargeRate){
 }
 
 int batteryIsNotOk(float temperature, float soc, float chargeRate){
-  return (batteryTemperatureIsOk(temperature) || batterySOCIsOk(soc) || batterychargeRateIsOk(chargeRate));
+  return (!(batteryTemperatureIsOk(temperature) && batterySOCIsOk(soc) && batterychargeRateIsOk(chargeRate)));
 }
