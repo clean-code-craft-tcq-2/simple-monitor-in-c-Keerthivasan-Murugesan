@@ -1,49 +1,47 @@
 #include "CheckBatteryStatus.h"
 
-batterystatus bs1;
-
-void lowerThresholdBreached(float value, float threshold, int bitmask){
+void lowerThresholdBreached(float value, float threshold, int bitmask, struct batterystatus *bs1){
     float WarningLimit = 1.05*threshold;              //warning limit set 5% higher than threshold
-    if (value < threshold) bs1.lowerlimitBreached |= 1 << bitmask;
-    else if (value < WarningLimit) bs1.lowerlimitWarning |= 1 << bitmask;
+    if (value < threshold) bs1->lowerlimitBreached |= 1 << bitmask;
+    else if (value < WarningLimit) bs1->lowerlimitWarning |= 1 << bitmask;
     else{   /*do nothing*/  } 
 }
 
-void higherThresholdBreached(float value, float threshold, int bitmask){
+void higherThresholdBreached(float value, float threshold, int bitmask, struct batterystatus *bs1){
     float WarningLimit = 0.95*threshold;              //warning limit set 5% lesser than threshold
-    if (value > threshold) bs1.higherlimitBreached |= 1 << bitmask;
-    else if (value > WarningLimit) bs1.higherlimitWarning |= 1 << bitmask;
+    if (value > threshold) bs1->higherlimitBreached |= 1 << bitmask;
+    else if (value > WarningLimit) bs1->higherlimitWarning |= 1 << bitmask;
     else{   /*do nothing*/  } 
 }
 
-void CheckbatteryTemperature(float temperature) {
+void CheckbatteryTemperature(float temperature, struct batterystatus *bs1) {
 
-    higherThresholdBreached(temperature, TEMP_HIGH_THR, TEMP_MASK);
-    lowerThresholdBreached(temperature, TEMP_LOW_THR, TEMP_MASK);
+    higherThresholdBreached(temperature, TEMP_HIGH_THR, TEMP_MASK, &bs1);
+    lowerThresholdBreached(temperature, TEMP_LOW_THR, TEMP_MASK, &bs1);
 }
 
-void CheckbatterySOC(float soc){
+void CheckbatterySOC(float soc, struct batterystatus *bs1){
 
-    higherThresholdBreached(soc, SOC_HIGH_THR, SOC_MASK);
-    lowerThresholdBreached(soc, SOC_LOW_THR, SOC_MASK);
+    higherThresholdBreached(soc, SOC_HIGH_THR, SOC_MASK, &bs1);
+    lowerThresholdBreached(soc, SOC_LOW_THR, SOC_MASK, &bs1);
 }
 
-void CheckbatterychargeRate(float chargeRate){
-    higherThresholdBreached(chargeRate, CHARGERATE_HIGH_THR, CHARGERATE_MASK);
-    lowerThresholdBreached(chargeRate, CHARGERATE_LOW_THR, CHARGERATE_MASK);
+void CheckbatterychargeRate(float chargeRate, struct batterystatus *bs1){
+    higherThresholdBreached(chargeRate, CHARGERATE_HIGH_THR, CHARGERATE_MASK, &bs1);
+    lowerThresholdBreached(chargeRate, CHARGERATE_LOW_THR, CHARGERATE_MASK, &bs1);
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate){
-
+    batterystatus bs1;
     bs1.higherlimitBreached = 0;
     bs1.higherlimitWarning = 0;
     bs1.lowerlimitBreached = 0;
     bs1.lowerlimitWarning = 0;
 
-    CheckbatteryTemperature(temperature);
-    CheckbatterySOC(soc);
-    CheckbatterychargeRate(chargeRate);
-    printonConsole(bs1);
+    CheckbatteryTemperature(temperature, &bs1);
+    CheckbatterySOC(soc, &bs1);
+    CheckbatterychargeRate(chargeRate, &bs1);
+    printonConsole(&bs1);
 
     if(bs1.higherlimitBreached || bs1.lowerlimitBreached) return 0;
     else return 1;

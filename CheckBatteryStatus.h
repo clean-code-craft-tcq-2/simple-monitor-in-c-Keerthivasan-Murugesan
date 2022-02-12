@@ -22,12 +22,12 @@ extern struct {
     unsigned int lowerlimitWarning;
 }batterystatus;
 
-void lowerThresholdBreached (float value, float threshold, int bitmask);
-void higherThresholdBreached (float value, float threshold, int bitmask);
+void lowerThresholdBreached (float value, float threshold, int bitmask, struct batterystatus *bs1);
+void higherThresholdBreached (float value, float threshold, int bitmask, struct batterystatus *bs1);
 
-void CheckbatteryTemperature(float temperature);
-void CheckbatterySOC(float soc);
-void CheckbatterychargeRate(float chargeRate);
+void CheckbatteryTemperature(float temperature, struct batterystatus *bs1);
+void CheckbatterySOC(float soc, struct batterystatus *bs1);
+void CheckbatterychargeRate(float chargeRate, struct batterystatus *bs1);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
 
