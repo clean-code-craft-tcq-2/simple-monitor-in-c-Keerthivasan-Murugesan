@@ -12,6 +12,6 @@ void testbatterystatus(){
 }
 
 int main() {
-  struct batterystatus bs1 = {0,0,0,0};
+  batterystatus bs1 = {0,0,0,0};
   testbatterystatus();
 }
