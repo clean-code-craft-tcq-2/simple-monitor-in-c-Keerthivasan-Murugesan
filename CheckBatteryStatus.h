@@ -8,12 +8,23 @@
 #define CHARGERATE_LOW_THR   0
 #define CHARGERATE_HIGH_THR  0.8
 
-int lowerThresholdBreached (float value, float threshold);
-int higherThresholdBreached (float value, float threshold);
+#define TEMP_MASK       1
+#define SOC_MASK        2
+#define CHARGERATE_MASK 4
 
-int batteryTemperatureIsOk(float temperature);
-int batterySOCIsOk(float soc);
-int batterychargeRateIsOk(float chargeRate);
+struct {
+    unsigned int higherlimitBreached;
+    unsigned int lowerlimitBreached;
+    unsigned int higherlimitWarning;
+    unsigned int lowerlimitWarning;
+}batterystatus;
+
+void lowerThresholdBreached (float value, float threshold);
+void higherThresholdBreached (float value, float threshold);
+
+void batteryTemperatureIsOk(float temperature);
+void batterySOCIsOk(float soc);
+void batterychargeRateIsOk(float chargeRate);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
 
