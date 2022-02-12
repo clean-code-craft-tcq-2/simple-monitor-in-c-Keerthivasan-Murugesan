@@ -15,7 +15,7 @@
 #define SOC_MASK        1
 #define CHARGERATE_MASK 2
 
-struct {
+extern struct {
     unsigned int higherlimitBreached;
     unsigned int lowerlimitBreached;
     unsigned int higherlimitWarning;
