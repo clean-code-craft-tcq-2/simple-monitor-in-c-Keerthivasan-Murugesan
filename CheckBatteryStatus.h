@@ -1,6 +1,7 @@
 #ifndef CheckBatteryStatus_H
 #define CheckBatteryStatus_H
 
+#include <stdio.h>
 #include "PrintBatteryStatus.h"
 
 #define TEMP_LOW_THR    0
