@@ -12,6 +12,5 @@ void testbatterystatus(){
 }
 
 int main() {
-  batterystatus bs1 = {0,0,0,0};
   testbatterystatus();
 }
