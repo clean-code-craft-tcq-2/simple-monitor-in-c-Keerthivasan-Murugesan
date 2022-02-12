@@ -15,12 +15,12 @@
 #define SOC_MASK        1
 #define CHARGERATE_MASK 2
 
-extern struct {
+struct batterystatus{
     unsigned int higherlimitBreached;
     unsigned int lowerlimitBreached;
     unsigned int higherlimitWarning;
     unsigned int lowerlimitWarning;
-}batterystatus;
+};
 
 void lowerThresholdBreached (float value, float threshold, int bitmask, struct batterystatus *bs1);
 void higherThresholdBreached (float value, float threshold, int bitmask, struct batterystatus *bs1);
