@@ -12,12 +12,6 @@ void printlowerlimitexceeded(){
     if(batterystatus.lowerlimitBreached << CHARGERATE_MASK) printf("Charge rate is below lower limit!\n");
 }
 
-void printlowerlimitexceeded(){
-    if(batterystatus.lowerlimitBreached << TEMP_MASK) printf("Temperature is below lower limit!\n");
-    if(batterystatus.lowerlimitBreached << SOC_MASK) printf("SOC is below lower limit!\n");
-    if(batterystatus.lowerlimitBreached << CHARGERATE_MASK) printf("Charge rate is below lower limit!\n");
-}
-
 void printhigherlimiwarning(){
     if(batterystatus.higherlimitWarning << TEMP_MASK) printf("Warning! Temperature is about to exceed the higher limit!\n");
     if(batterystatus.higherlimitWarning << SOC_MASK) printf("Warning! SOC is about to exceed the higher limit!\n");
