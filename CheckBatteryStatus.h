@@ -25,9 +25,9 @@ struct {
 void lowerThresholdBreached (float value, float threshold, int bitmask);
 void higherThresholdBreached (float value, float threshold, int bitmask);
 
-void batteryTemperatureIsOk(float temperature);
-void batterySOCIsOk(float soc);
-void batterychargeRateIsOk(float chargeRate);
+void CheckbatteryTemperature(float temperature);
+void CheckbatterySOC(float soc);
+void CheckbatterychargeRate(float chargeRate);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
 

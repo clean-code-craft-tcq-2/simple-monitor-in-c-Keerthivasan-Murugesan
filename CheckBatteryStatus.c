@@ -2,15 +2,15 @@
 
 void lowerThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 1.05*threshold;              //warning limit set 5% higher than threshold
-    if (value < threshold) batterystatus.lowerlimitBreached |= 1 << bitmask;
-    else if (value < WarningLimit) batterystatus.lowerlimitWarning |= 1 << bitmask;
+    if (value < threshold) bs1.lowerlimitBreached |= 1 << bitmask;
+    else if (value < WarningLimit) bs1.lowerlimitWarning |= 1 << bitmask;
     else{   /*do nothing*/  } 
 }
 
 void higherThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 0.95*threshold;              //warning limit set 5% lesser than threshold
-    if (value > threshold) batterystatus.higherlimitBreached |= 1 << bitmask;
-    else if (value > WarningLimit) batterystatus.higherlimitWarning |= 1 << bitmask;
+    if (value > threshold) bs1.higherlimitBreached |= 1 << bitmask;
+    else if (value > WarningLimit) bs1.higherlimitWarning |= 1 << bitmask;
     else{   /*do nothing*/  } 
 }
 
@@ -32,11 +32,20 @@ void CheckbatterychargeRate(float chargeRate){
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate){
+
+    batterystatus bs1;
+    bs1.higherlimitBreached = 0;
+    bs1.higherlimitWarning = 0;
+    bs1.lowerlimitBreached = 0;
+    bs1.lowerlimitWarning = 0;
+    
     CheckbatteryTemperature(temperature);
     CheckbatterySOC(soc);
     CheckbatterychargeRate(chargeRate);
     printonConsole();
 
-    if(batterystatus.higherlimitBreached || batterystatus.lowerlimitBreached) return 0;
+    if(bs1.higherlimitBreached || bs1.lowerlimitBreached) return 0;
     else return 1;
+
+    printf("%d %d %d %d", bs1.higherlimitBreached, bs1.lowerlimitBreached, bs1.higherlimitWarning, bs1.lowerlimitWarning);
 }

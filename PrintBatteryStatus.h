@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include "CheckBatteryStatus.h"
 
-void printonConsole();
-void printhigherlimitexceeded();
-void printlowerlimitexceeded();
-void printhigherlimiwarning();
-void printlowerlimiwarning();
+void printonConsole(struct batterystatus);
+void printhigherlimitexceeded(struct batterystatus);
+void printlowerlimitexceeded(struct batterystatus);
+void printhigherlimitwarning(struct batterystatus);
+void printlowerlimitwarning(struct batterystatus);
 
 #endif
