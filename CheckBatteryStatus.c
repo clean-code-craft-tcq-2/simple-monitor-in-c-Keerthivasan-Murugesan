@@ -2,6 +2,7 @@
 
 void lowerThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 1.05*threshold;              //warning limit set 5% higher than threshold
+    static batterystatus.lowerlimitBreached = 0;
     if (value < threshold) batterystatus.lowerlimitBreached |= 1 << bitmask;
     else if (value < WarningLimit) batterystatus.lowerlimitWarning |= 1 << bitmask;
     else{   /*do nothing*/  } 
@@ -9,6 +10,7 @@ void lowerThresholdBreached(float value, float threshold, int bitmask){
 
 void higherThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 0.95*threshold;              //warning limit set 5% lesser than threshold
+    static batterystatus.higherlimitBreached = 0;
     if (value > threshold) batterystatus.higherlimitBreached |= 1 << bitmask;
     else if (value > WarningLimit) batterystatus.higherlimitWarning |= 1 << bitmask;
     else{   /*do nothing*/  } 
