@@ -11,9 +11,9 @@
 #define CHARGERATE_LOW_THR   0
 #define CHARGERATE_HIGH_THR  0.8
 
-#define TEMP_MASK       1
-#define SOC_MASK        2
-#define CHARGERATE_MASK 4
+#define TEMP_MASK       0
+#define SOC_MASK        1
+#define CHARGERATE_MASK 2
 
 struct {
     unsigned int higherlimitBreached;
