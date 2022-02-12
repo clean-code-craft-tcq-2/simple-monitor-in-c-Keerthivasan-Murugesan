@@ -18,25 +18,17 @@ void CheckbatteryTemperature(float temperature) {
 
     higherThresholdBreached(temperature, TEMP_HIGH_THR, TEMP_MASK);
     lowerThresholdBreached(temperature, TEMP_LOW_THR, TEMP_MASK);
-
-    printf("Temperature out of range!\n");
-
 }
 
 void CheckbatterySOC(float soc){
 
     higherThresholdBreached(soc, SOC_HIGH_THR, SOC_MASK);
     lowerThresholdBreached(soc, SOC_LOW_THR, SOC_MASK);
-
-    printf("SOC out of range!\n");
 }
 
 void CheckbatterychargeRate(float chargeRate){
     higherThresholdBreached(chargeRate, CHARGERATE_HIGH_THR, CHARGERATE_MASK);
     lowerThresholdBreached(chargeRate, CHARGERATE_LOW_THR, CHARGERATE_MASK);
-
-    printf("Charge Rate out of range!\n");
-
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate){
@@ -47,5 +39,4 @@ int batteryIsOk(float temperature, float soc, float chargeRate){
 
     if(batterystatus.higherlimitBreached || batterystatus.lowerlimitBreached) return 0;
     else return 1;
-    
 }

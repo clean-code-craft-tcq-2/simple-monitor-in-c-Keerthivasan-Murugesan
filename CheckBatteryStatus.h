@@ -1,6 +1,8 @@
 #ifndef CheckBatteryStatus_H
 #define CheckBatteryStatus_H
 
+#include "PrintBatteryStatus.h"
+
 #define TEMP_LOW_THR    0
 #define TEMP_HIGH_THR   45
 #define SOC_LOW_THR     20
@@ -19,8 +21,8 @@ struct {
     unsigned int lowerlimitWarning;
 }batterystatus;
 
-void lowerThresholdBreached (float value, float threshold);
-void higherThresholdBreached (float value, float threshold);
+void lowerThresholdBreached (float value, float threshold, int bitmask);
+void higherThresholdBreached (float value, float threshold, int bitmask);
 
 void batteryTemperatureIsOk(float temperature);
 void batterySOCIsOk(float soc);

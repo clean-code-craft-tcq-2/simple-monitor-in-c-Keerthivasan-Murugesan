@@ -1,4 +1,5 @@
 #include "PrintBatteryStatus.h"
+#include "CheckBatteryStatus.h"
 
 void printhigherlimitexceeded(){
     if(batterystatus.higherlimitBreached << TEMP_MASK) printf("Temperature exceeds higher limit!\n");
