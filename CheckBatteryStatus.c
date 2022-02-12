@@ -38,11 +38,11 @@ int batteryIsOk(float temperature, float soc, float chargeRate){
     bs1.higherlimitWarning = 0;
     bs1.lowerlimitBreached = 0;
     bs1.lowerlimitWarning = 0;
-    
+
     CheckbatteryTemperature(temperature);
     CheckbatterySOC(soc);
     CheckbatterychargeRate(chargeRate);
-    printonConsole();
+    printonConsole(bs1);
 
     if(bs1.higherlimitBreached || bs1.lowerlimitBreached) return 0;
     else return 1;
