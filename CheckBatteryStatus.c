@@ -1,5 +1,7 @@
 #include "CheckBatteryStatus.h"
 
+batterystatus bs1;
+
 void lowerThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 1.05*threshold;              //warning limit set 5% higher than threshold
     if (value < threshold) bs1.lowerlimitBreached |= 1 << bitmask;
@@ -33,7 +35,6 @@ void CheckbatterychargeRate(float chargeRate){
 
 int batteryIsOk(float temperature, float soc, float chargeRate){
 
-    batterystatus bs1;
     bs1.higherlimitBreached = 0;
     bs1.higherlimitWarning = 0;
     bs1.lowerlimitBreached = 0;
