@@ -15,19 +15,14 @@
 #define SOC_MASK        1
 #define CHARGERATE_MASK 2
 
-struct batterystatus{
-    unsigned int higherlimitBreached;
-    unsigned int lowerlimitBreached;
-    unsigned int higherlimitWarning;
-    unsigned int lowerlimitWarning;
-};
+extern unsigned int batterystatus[4];
 
-void lowerThresholdBreached (float value, float threshold, int bitmask, struct batterystatus *bs1);
-void higherThresholdBreached (float value, float threshold, int bitmask, struct batterystatus *bs1);
+void lowerThresholdBreached (float value, float threshold, int bitmask);
+void higherThresholdBreached (float value, float threshold, int bitmask);
 
-void CheckbatteryTemperature(float temperature, struct batterystatus *bs1);
-void CheckbatterySOC(float soc, struct batterystatus *bs1);
-void CheckbatterychargeRate(float chargeRate, struct batterystatus *bs1);
+void CheckbatteryTemperature(float temperature);
+void CheckbatterySOC(float soc);
+void CheckbatterychargeRate(float chargeRate);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
 
