@@ -1,5 +1,12 @@
 #include "CheckBatteryStatus.h"
 
+unsigned int batterystatus[4] = {
+    0,       //higherlimitBreached
+    0,       //higherlimitWarning
+    0,       //lowerlimitBreached
+    0        //lowerlimitWarning
+};
+
 void lowerThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 1.05*threshold;              //warning limit set 5% higher than threshold
     if (value < threshold) batterystatus[2] |= 1 << bitmask;
@@ -32,12 +39,7 @@ void CheckbatterychargeRate(float chargeRate){
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate){
-   unsigned int batterystatus[4] = {
-       0,       //higherlimitBreached
-       0,       //higherlimitWarning
-       0,       //lowerlimitBreached
-       0        //lowerlimitWarning
-   };
+
     CheckbatteryTemperature(temperature);
     CheckbatterySOC(soc);
     CheckbatterychargeRate(chargeRate);
