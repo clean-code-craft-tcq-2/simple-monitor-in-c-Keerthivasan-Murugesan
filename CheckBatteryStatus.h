@@ -17,12 +17,12 @@
 
 extern unsigned int batterystatus[4];
 
-void lowerThresholdBreached (float value, float threshold, int bitmask);
-void higherThresholdBreached (float value, float threshold, int bitmask);
+void lowerThresholdBreached (float value, float threshold, int bitmask, unsigned int *batterystatus);
+void higherThresholdBreached (float value, float threshold, int bitmask, unsigned int *batterystatus);
 
-void CheckbatteryTemperature(float temperature);
-void CheckbatterySOC(float soc);
-void CheckbatterychargeRate(float chargeRate);
+void CheckbatteryTemperature(float temperature, unsigned int *batterystatus);
+void CheckbatterySOC(float soc, unsigned int *batterystatus);
+void CheckbatterychargeRate(float chargeRate, unsigned int *batterystatus);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
 

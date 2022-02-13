@@ -4,12 +4,10 @@
 #include <stdio.h>
 #include "CheckBatteryStatus.h"
 
-extern unsigned int batterystatus[4];
-
-void printonConsole();
-void printhigherlimitexceeded();
-void printlowerlimitexceeded();
-void printhigherlimitwarning();
-void printlowerlimitwarning();
+void printonConsole(unsigned int *batterystatus);
+void printhigherlimitexceeded(unsigned int *batterystatus);
+void printlowerlimitexceeded(unsigned int *batterystatus);
+void printhigherlimitwarning(unsigned int *batterystatus);
+void printlowerlimitwarning(unsigned int *batterystatus);
 
 #endif
