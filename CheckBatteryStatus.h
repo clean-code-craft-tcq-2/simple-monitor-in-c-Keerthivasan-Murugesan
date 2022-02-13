@@ -15,8 +15,6 @@
 #define SOC_MASK        1
 #define CHARGERATE_MASK 2
 
-extern unsigned int batterystatus[4];
-
 void lowerThresholdBreached (float value, float threshold, int bitmask, unsigned int *batterystatus);
 void higherThresholdBreached (float value, float threshold, int bitmask, unsigned int *batterystatus);
 
