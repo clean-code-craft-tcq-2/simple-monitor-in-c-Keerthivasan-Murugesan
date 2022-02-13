@@ -30,4 +30,5 @@ void printonConsole(unsigned int *batterystatus){
     void printlowerlimitexceeded(batterystatus);
     void printhigherlimitwarning(batterystatus);
     void printlowerlimitwarning(batterystatus);
+    printf("%d %d %d %d \n", batterystatus[0], batterystatus[1], batterystatus[2], batterystatus[3]);
 }
