@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "CheckBatteryStatus.h"
 
+extern unsigned int batterystatus[4];
+
 void printonConsole();
 void printhigherlimitexceeded();
 void printlowerlimitexceeded();
