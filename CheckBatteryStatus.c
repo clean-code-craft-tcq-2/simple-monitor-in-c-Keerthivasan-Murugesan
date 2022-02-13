@@ -1,34 +1,34 @@
 #include "CheckBatteryStatus.h"
 
-void lowerThresholdBreached(float value, float threshold, int bitmask, struct batterystatus *bs1){
+void lowerThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 1.05*threshold;              //warning limit set 5% higher than threshold
     if (value < threshold) batterystatus[2] |= 1 << bitmask;
     else if (value < WarningLimit) batterystatus[3] |= 1 << bitmask;
     else{   /*do nothing*/  } 
 }
 
-void higherThresholdBreached(float value, float threshold, int bitmask, struct batterystatus *bs1){
+void higherThresholdBreached(float value, float threshold, int bitmask){
     float WarningLimit = 0.95*threshold;              //warning limit set 5% lesser than threshold
     if (value > threshold) batterystatus[0] |= 1 << bitmask;
     else if (value > WarningLimit) batterystatus[1] |= 1 << bitmask;
     else{   /*do nothing*/  } 
 }
 
-void CheckbatteryTemperature(float temperature, struct batterystatus *bs1) {
+void CheckbatteryTemperature(float temperature) {
 
-    higherThresholdBreached(temperature, TEMP_HIGH_THR, TEMP_MASK, &bs1);
-    lowerThresholdBreached(temperature, TEMP_LOW_THR, TEMP_MASK, &bs1);
+    higherThresholdBreached(temperature, TEMP_HIGH_THR, TEMP_MASK);
+    lowerThresholdBreached(temperature, TEMP_LOW_THR, TEMP_MASK);
 }
 
-void CheckbatterySOC(float soc, struct batterystatus *bs1){
+void CheckbatterySOC(float soc){
 
-    higherThresholdBreached(soc, SOC_HIGH_THR, SOC_MASK, &bs1);
-    lowerThresholdBreached(soc, SOC_LOW_THR, SOC_MASK, &bs1);
+    higherThresholdBreached(soc, SOC_HIGH_THR, SOC_MASK);
+    lowerThresholdBreached(soc, SOC_LOW_THR, SOC_MASK);
 }
 
-void CheckbatterychargeRate(float chargeRate, struct batterystatus *bs1){
-    higherThresholdBreached(chargeRate, CHARGERATE_HIGH_THR, CHARGERATE_MASK, &bs1);
-    lowerThresholdBreached(chargeRate, CHARGERATE_LOW_THR, CHARGERATE_MASK, &bs1);
+void CheckbatterychargeRate(float chargeRate){
+    higherThresholdBreached(chargeRate, CHARGERATE_HIGH_THR, CHARGERATE_MASK);
+    lowerThresholdBreached(chargeRate, CHARGERATE_LOW_THR, CHARGERATE_MASK);
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate){
