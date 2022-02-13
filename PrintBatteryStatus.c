@@ -4,9 +4,9 @@ void printhigherlimitexceeded(unsigned int *batterystatus){
    // if((batterystatus[0]) & 1) printf("Temperature exceeds higher limit!\n");
   //  if((batterystatus[0]) & 2) printf("SOC exceeds higher limit!\n");
    // if((batterystatus[0]) & 4) printf("Charge rate exceeds higher limit!\n");
-    batterystatus[0]) & 4 ? printf("Temperature exceeds higher limit!\n") : printf("Temperature is OK!\n");
-    batterystatus[0]) & 4 ? printf("SOC exceeds higher limit!\n") : printf("SOC is OK!\n");
-    batterystatus[0]) & 4 ? printf("Charge rate exceeds higher limit!\n") : printf("Charge rate is OK!\n");
+    batterystatus[0] & 1 ? printf("Temperature exceeds higher limit!\n") : printf("Temperature is OK!\n");
+    batterystatus[0] & 2 ? printf("SOC exceeds higher limit!\n") : printf("SOC is OK!\n");
+    batterystatus[0] & 4 ? printf("Charge rate exceeds higher limit!\n") : printf("Charge rate is OK!\n");
 }
 
 void printlowerlimitexceeded(unsigned int *batterystatus){
