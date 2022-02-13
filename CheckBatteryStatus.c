@@ -47,4 +47,6 @@ int batteryIsOk(float temperature, float soc, float chargeRate){
 
     if(batterystatus[0] || batterystatus[2]) return 0;
     else return 1;
+    
+    printf("%d %d %d %d", batterystatus[0], batterystatus[1], batterystatus[2], batterystatus[3]);
 }
