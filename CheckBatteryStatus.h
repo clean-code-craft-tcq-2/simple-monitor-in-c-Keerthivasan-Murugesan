@@ -15,8 +15,11 @@
 #define SOC_MASK        1
 #define CHARGERATE_MASK 2
 
+void lowerWarningLimitReached(float value, float threshold, float tolerance, int bitmask, unsigned int *batterystatus);
+void higherWarningLimitReached(float value, float threshold, float tolerance, int bitmask, unsigned int *batterystatus);
 void lowerThresholdBreached (float value, float threshold, int bitmask, unsigned int *batterystatus);
 void higherThresholdBreached (float value, float threshold, int bitmask, unsigned int *batterystatus);
+void limitchecker(float value, float high_threshold, float low_threshold, int bitmask, unsigned int *batterystatus);
 
 void CheckbatteryTemperature(float temperature, unsigned int *batterystatus);
 void CheckbatterySOC(float soc, unsigned int *batterystatus);
