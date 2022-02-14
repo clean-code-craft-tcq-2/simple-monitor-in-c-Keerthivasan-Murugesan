@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include "CheckBatteryStatus.h"
 
-void printalert(bool print, int parameter, int status);
-void printonConsole(unsigned int *batterystatus);
+void printonConsole(bool print, int parameter, int status);
+void printalert(unsigned int *batterystatus);
 
 #endif

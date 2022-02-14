@@ -50,7 +50,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate){
     CheckbatteryTemperature(temperature, batterystatus);
     CheckbatterySOC(soc, batterystatus);
     CheckbatterychargeRate(chargeRate, batterystatus);
-    printonConsole(batterystatus);
+    printalert(batterystatus);
 
     if(batterystatus[0] || batterystatus[2]) return 0;
     else return 1;
