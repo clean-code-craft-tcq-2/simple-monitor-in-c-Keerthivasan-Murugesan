@@ -15,7 +15,8 @@ void printonConsole(unsigned int *batterystatus){
     for(i=0; i<=3; i++){
         int k = 0;
         for(j=1; j<=4; j=j*2){
-            printalert(((batterystatus[i]) & j), k, i);
+            bool print = batterystatus[i] & j;
+            printalert(print, k, i);
             k++;
         }
     }
