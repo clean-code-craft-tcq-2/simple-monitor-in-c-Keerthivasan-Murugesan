@@ -11,8 +11,7 @@ void printonConsole(unsigned int *batterystatus){
     for(i=0; i<=3; i++){
         int k = 0;
         for(j=1; j<=4; j=j*2){
-            printf("%d %d", batterystatus[i], k);
-            if((batterystatus[i]) & j) printf("%s is %s", batteryParameter[k], batteryStatus_Str[i]);
+            if((batterystatus[i]) & j) printf("%s is %s\n", batteryParameter[k], batteryStatus_Str[i]);
             k++;
         }
     }
