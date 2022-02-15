@@ -9,6 +9,7 @@ LanguageParam alertprinter[2]= {{{"Temperature", "StateofCharge", "ChargeRate"},
 
 
 void printonConsole(bool print, int parameter, int status){
+    printf(/*********************************/);
     if(print) printf("%s : %s\n", alertprinter[language].batteryParameter[parameter], alertprinter[language].batteryStatus_Str[status]);
     else printf("%s : %s\n", alertprinter[language].batteryParameter[parameter], alertprinter[language].batteryStatus_Str[4]);
 }
