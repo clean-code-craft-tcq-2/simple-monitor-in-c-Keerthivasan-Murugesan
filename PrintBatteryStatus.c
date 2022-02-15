@@ -15,7 +15,7 @@ void printonConsole(bool print, int parameter, int status){
 
 void printalert(unsigned int *batterystatus){
     int i, j;
-    printf("*********************************/n");
+    printf("*********************************\n");
     for(i=0; i<=3; i++){
         int k = 0;
         for(j=1; j<=4; j=j*2){
