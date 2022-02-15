@@ -1,13 +1,16 @@
 #include "PrintBatteryStatus.h"
 
-const char* batteryParameter[] = {"Temperature", "StateofCharge", "ChargeRate"};
-const char* batteryStatus_Str[] = {"above higher limit",
-                                   "approaching the higher limit", 
-                                   "below lower limit", 
-                                   "approaching the lower limit"};
+int language = GERMAN;
+
+LanguageParam alertprinter[2]= {{{"Temperature", "StateofCharge", "ChargeRate"},
+                                {"HIGH_BREACH", "HIGH_WARNING", "LOW_BREACH", "LOW_WARNING", "NORMAL"}}, 
+                                {{"Temperatur", "Ladezustand", "Ladestrom"},
+                                {"HOCH_VERSTOSS", "HOCH_WARNUNG", "NIEDRIG_VERSTOSS", "NIEDRIG_WARNUNG", "NORMAL"}}};
+
 
 void printonConsole(bool print, int parameter, int status){
-    if(print) printf("%s is %s\n", batteryParameter[parameter], batteryStatus_Str[status]);
+    if(print) printf("%s : %s\n", alertprinter[language].batteryParameter[parameter], alertprinter[language].batteryStatus_Str[status]);
+    else printf("%s : %s\n", alertprinter[language].batteryParameter[parameter], alertprinter[language].batteryStatus_Str[4]);
 }
 
 void printalert(unsigned int *batterystatus){
